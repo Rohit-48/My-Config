@@ -1,0 +1,145 @@
+@define-color background #1e1e2e;
+@define-color foreground #cdd6f4;
+@define-color color0 #313244;
+@define-color color15 #a6adc8;
+
+* {
+  color: @foreground;
+  border: none;
+  font-family: "JetbrainsMono Nerd Font";
+  font-size: 15px;
+  min-height: 10px;
+}
+
+window#waybar {
+  background: transparent;
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+#custom-nixos,
+#clock,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#idle_inhibitor,
+#pulseaudio,
+#battery,
+#network {
+  margin-top: 6px;
+  margin-bottom: 6px;
+  padding-left: 10px;
+  padding-right: 10px;
+  transition: none;
+}
+
+#custom-nixos {
+  background-color: @background;
+  /*#5376C3*/
+  color: @foreground;
+  font-size: 20px;
+  padding-right: 15px;
+}
+
+#custom-nixos,
+#cpu,
+#network {
+  margin-left: 5px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+#clock,
+#temperature {
+  margin-right: 5px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+#clock {
+  background: @color15;
+  color: @color0;
+}
+
+#cpu {
+  background: @color0;
+  color: @color15;
+}
+
+#memory {
+  background: @color15;
+  color: @color0;
+}
+
+#disk {
+  background: @color0;
+  color: @color15;
+}
+
+#temperature {
+  background: @color15;
+  color: @color0;
+}
+
+#workspaces button {
+  color: @foreground;
+  background: @background;
+  border-radius: 10px;
+  margin: 6px 5px;
+  padding: 0px 6px;
+  transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+}
+
+#workspaces button.active {
+  border: 1px solid @foreground;
+}
+
+#workspaces button:hover {
+  background: @foreground;
+  color: @background;
+}
+
+#taskbar {
+  background: transparent;
+  border-radius: 10px;
+  padding: 0px 5px;
+  margin: 6px 5px;
+}
+
+#taskbar button {
+  padding: 0px 5px;
+  margin: 0px 3px;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+#taskbar button.active {
+  background: rgba(17, 27, 31, 0.25);
+}
+
+#taskbar button:hover {
+  background: rgba(209, 233, 242, 0.25);
+}
+
+#network {
+  background: @color0;
+  color: @color15;
+}
+
+#pulseaudio {
+  background: @color15;
+  color: @color0;
+}
+
+
+#battery {
+  background: @color0;
+  color: @color15;
+  padding-right: 15px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  margin-right: 5px;
+}
