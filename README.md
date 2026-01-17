@@ -36,8 +36,8 @@ Custom NixOS configuration with Hyprland window manager, optimized for developme
 - Browsers: Google Chrome (Wayland)
 - Communication: Discord
 - Media: VLC, Spotify
-- Productivity: Obsidian, LibreOffice
-- File Manager: Thunar
+- Productivity: Obsidian 
+- File Manager: Dolphin
 
 ## Theming
 
@@ -47,14 +47,6 @@ Custom NixOS configuration with Hyprland window manager, optimized for developme
 - Fonts: JetBrains Mono Nerd Font, Fira Code, Hack
 - GTK: Catppuccin GTK theme
 
-## Images
-
-<div align="center">
-  <img src="images/btop.png" alt="btop" width="300"/>
-  <img src="images/fastfetch.png" alt="fastfetch" width="300"/>
-  <img src="images/screen-shot.png" alt="screen-shot" width="300"/>
-</div>
-
 ## System Details
 
 **Locale & Timezone**
@@ -62,19 +54,15 @@ Custom NixOS configuration with Hyprland window manager, optimized for developme
 - Locale: en_IN (English India)
 
 **Security**
-- Polkit authentication agent
-- GNOME Keyring for credentials
 - OpenSSH server enabled
 - NetworkManager integration
 
 **Package Management**
 - Nix Flakes for reproducible builds
 - Unfree packages allowed
-- Flatpak support
 - Docker support
 
 **Performance**
-- TLP battery optimization
 - PipeWire low-latency audio
 - Wayland display protocol
 - Intel integrated graphics support
