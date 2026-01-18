@@ -1,32 +1,59 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+       inputs.lanzaboote.nixosModules.lanzaboote
     ];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  # file sys support 
-  boot.supportedFilesystems = [ "ntfs" ];
-  
-  # nix garbage collector
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 5d";
+   # Nix 
+   nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    auto-optimise-store = true;  # Save disk space automatically
+    
+    # Build performance
+    max-jobs = "auto";
+    cores = 4;  # Adjust based on your CPU (you have Intel)
   };
 
+  # ============================================
+  # SECURE BOOT CONFIGURATION
+  # ============================================
+  boot.supportedFilesystems = [ "ntfs" ];
+  
+  # Disable systemd-boot (Lanzaboote replaces it)
+  boot.loader.systemd-boot.enable = lib.mkForce false;
+  
+  # Lanzaboote for Secure Boot
+  boot.lanzaboote = {
+    enable = true;
+   pkiBundle = "/var/lib/sbctl";  # Standard sbctl location
+  };
+  
+  boot.loader.efi.canTouchEfiVariables = true;
 
+  # Use latest kernel (important for security patches)
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  
+  # Kernel Level Security
+   boot.kernelParams = [
+    "quiet"
+    "splash"
+    # Security hardening - prevents kernel exploits
+    "lockdown=confidentiality"
+    # Optional: disable kernel messages on screen
+    "loglevel=3"
+  ];
+   
+  # Prevent kernel module loading after boot (security)
+  security.lockKernelModules = true;
+
+  # Enable kernel security features
+  security.protectKernelImage = true;
 
   networking.hostName = "nixos"; # Define your hostname.
- # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -34,6 +61,17 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+
+  # Enable and configure firewall
+  networking.firewall = {
+    enable = true;
+    # Only open ports you actually need
+    # allowedTCPPorts = [ 3000 8080 5173 ];  # Uncomment for web dev
+    # allowedUDPPorts = [ ];
+    
+    # Log dropped packets (useful for debugging)
+    logRefusedConnections = true;
+  };
 
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
@@ -59,7 +97,6 @@
     variant = "";
   };
 
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.giyu = {
     isNormalUser = true;
@@ -73,17 +110,13 @@
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
-  };
-  
-  # Nix Flake
-  nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
-  };
+  }; 
 
-
-  # Hyprland
+   # Hyprland
   programs.hyprland = {
-	enable = true;
+    enable = true;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
   # Waybar
@@ -127,6 +160,7 @@
       #theme="powerlevel10k/powerlevel10k";
     #};
   };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -143,11 +177,13 @@
   environment.systemPackages = with pkgs; [
   	# Dev utils
 	neovim git gh vim wget curl tmux unzip ripgrep fd tree tig ffmpeg-full starship wf-recorder
-	n8n ollama
+	n8n ollama fzf eza bat zoxide
 
 	#sys monitoring 
 	htop btop 
-	
+
+	# secureboot
+	sbctl
 	# scripting
 	fastfetch nitch
 
@@ -197,6 +233,7 @@
 	cliphist
 	eww
 	pavucontrol
+	brightnessctl
 	networkmanagerapplet
 	
 	#spicetify
@@ -214,9 +251,14 @@
 	# wallpaper
     	swww
     	pywal
+	
+	# Security tools
+	nmap           # Network scanning
+    	wireshark      # Network analysis
+    	tcpdump        # Packet analyzer
   ];
   
- # Fonts
+  # Fonts
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
     nerd-fonts.fira-code
@@ -243,6 +285,32 @@
     enable = true;
   };
 
+  # TRIM for SSD health (IMPORTANT for longevity)
+  services.fstrim.enable = true;
+ 
+  # AppArmor (alternative to SELinux, easier to use)
+  security.apparmor = {
+    enable = true;
+    killUnconfinedConfinables = true;
+  };
+
+  # Disable core dumps (can contain sensitive data)
+  systemd.coredump.enable = false;
+  # Disable crash reporter
+  environment.etc."systemd/coredump.conf".text = ''
+    [Coredump]
+    Storage=none
+  '';
+
+    programs.git = {
+    enable = true;
+    config = {
+      init.defaultBranch = "main";
+      # Add your details:
+      user.name = "Rohit";
+      user.email = "rohitmandavkar3577@gmail.com";
+    };
+  };
   
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
