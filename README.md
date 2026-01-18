@@ -39,6 +39,19 @@ Custom NixOS configuration with Hyprland window manager, optimized for developme
 - Productivity: Obsidian 
 - File Manager: Dolphin
 
+## Added Features
+
+- Enable Secure Boot via Lanzaboote
+- Add kernel hardening (lockdown=confidentiality, module locking)
+- Enable AppArmor mandatory access control
+- Configure explicit firewall with connection logging
+- Disable core dumps for privacy
+- Add security tools (nmap, wireshark, tcpdump)
+- Enable SSD TRIM and auto-optimize Nix store
+- Add better CLI tools (bat, eza, fzf, zoxide)
+- Clean up flake.nix (remove dev shells, add inline docs)
+- Add comprehensive system documentation with troubleshooting guide
+
 ## Theming
 
 - Theme: Catppuccin Mocha (pink accents)
