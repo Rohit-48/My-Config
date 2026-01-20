@@ -160,6 +160,11 @@
       #theme="powerlevel10k/powerlevel10k";
     #};
   };
+  
+  # Zoxide 
+  programs.zoxide.enable = true;
+  programs.zoxide.enableZshIntegration = true;
+
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -184,6 +189,7 @@
 
 	# secureboot
 	sbctl
+
 	# scripting
 	fastfetch nitch
 
@@ -197,9 +203,9 @@
     	meslo-lgs-nf
 
 	# dev pkgs
-	nodejs_24 bun typescript pnpm
+	nodejs_24 bun typescript pnpm hugo
 	gcc gdb cmake pkg-config
-	python3 python3Packages.pip python3Packages.virtualenv
+	python314 uv python3Packages.pip python3Packages.virtualenv
 	go rustc cargo
 	openjdk
 	android-tools
@@ -209,11 +215,11 @@
 	docker docker-compose
 
 	# Application
-	brave discord spotify obsidian chromium 
-	
+	brave discord spotify obsidian chromium firefox-devedition
+
 	#code-editor
 	vscode  zed-editor
-	code-cursor
+	code-cursor 
 
 	# math
 	texliveFull   # LaTeX (assignments, reports)
@@ -311,7 +317,7 @@
       user.email = "rohitmandavkar3577@gmail.com";
     };
   };
-  
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
