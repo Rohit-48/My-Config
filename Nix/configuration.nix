@@ -215,7 +215,7 @@
 	docker docker-compose
 
 	# Application
-	brave discord spotify obsidian chromium firefox-devedition
+	brave discord spotify obsidian chromium obs-studio
 
 	#code-editor
 	vscode  zed-editor
