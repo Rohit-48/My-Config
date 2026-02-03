@@ -1,133 +1,281 @@
 /**
- * Modern Rofi Configuration
- * Place this file at: ~/.config/rofi/config.rasi
+ * Beautiful Modern Rofi Configuration
+ * A sleek, minimalist design with smooth animations
  */
 
 configuration {
-    modi: "drun,run,window,ssh";
-    show-icons: true;
-    terminal: "alacritty";
-    drun-display-format: "{name}";
-    location: 0;
-    disable-history: false;
-    hide-scrollbar: true;
-    display-drun: "   Apps";
-    display-run: "   Run";
-    display-window: " 﩯  Window";
-    display-ssh: "   SSH";
-    sidebar-mode: true;
+    modi:                        "drun,run,window,ssh";
+    show-icons:                  true;
+    icon-theme:                  "Papirus-Dark";
+    display-drun:                "Applications";
+    display-run:                 "Run";
+    display-window:              "Windows";
+    display-ssh:                 "SSH";
+    drun-display-format:         "{name}";
+    window-format:               "{w} · {c} · {t}";
+    font:                        "JetBrainsMono Nerd Font 12";
+    
+    /* Behavior */
+    terminal:                    "ghostty";
+    ssh-client:                  "ssh";
+    ssh-command:                 "{terminal} -e {ssh-client} {host}";
+    matching:                    "fuzzy";
+    scroll-method:               0;
+    disable-history:             false;
+    sidebar-mode:                true;
+    
+    /* Performance */
+    lazy-grab:                   true;
+    dpi:                         96;
 }
 
 * {
-    bg-col:  #1e1e2e;
-    bg-col-light: #313244;
-    border-col: #89b4fa;
-    selected-col: #313244;
-    blue: #89b4fa;
-    fg-col: #cdd6f4;
-    fg-col2: #f38ba8;
-    grey: #6c7086;
-    width: 600;
-    font: "JetBrainsMono Nerd Font 12";
-}
-
-element-text, element-icon , mode-switcher {
-    background-color: inherit;
-    text-color: inherit;
+    /* Color Palette - Nord-inspired with custom accents */
+    bg:                          #1e2127;
+    bg-alt:                      #282c34;
+    fg:                          #abb2bf;
+    fg-alt:                      #5c6370;
+    
+    accent:                      #ffc300;
+    accent-alt:                  #ffe169;
+    
+    success:                     #98c379;
+    warning:                     #e5c07b;
+    error:                       #e06c75;
+    
+    urgent:                      #be5046;
+    selected:                    #ffe566;
+    
+    /* Base colors */
+    background:                  @bg;
+    foreground:                  @fg;
+    
+    normal-background:           @bg;
+    normal-foreground:           @fg;
+    alternate-normal-background: @bg-alt;
+    alternate-normal-foreground: @fg;
+    selected-normal-background:  @selected;
+    selected-normal-foreground:  @bg;
+    
+    active-background:           @bg;
+    active-foreground:           @accent;
+    alternate-active-background: @bg-alt;
+    alternate-active-foreground: @accent;
+    selected-active-background:  @accent;
+    selected-active-foreground:  @bg;
+    
+    urgent-background:           @bg;
+    urgent-foreground:           @error;
+    alternate-urgent-background: @bg-alt;
+    alternate-urgent-foreground: @error;
+    selected-urgent-background:  @error;
+    selected-urgent-foreground:  @bg;
+    
+    /* Borders and spacing */
+    border-color:                @accent;
+    separatorcolor:              @accent-alt;
+    
+    background-color:            transparent;
+    text-color:                  @fg;
+    
+    spacing:                     0;
+    border-radius:               12px;
 }
 
 window {
-    height: 500px;
-    border: 3px;
-    border-color: @border-col;
-    background-color: @bg-col;
-    border-radius: 10px;
+    background-color:            @bg;
+    border:                      2px;
+    border-color:                @accent;
+    border-radius:               12px;
+    padding:                     0;
+    width:                       50%;
+    
+    /* Shadow for depth */
+    transparency:                "real";
 }
 
 mainbox {
-    background-color: @bg-col;
+    background-color:            @bg;
+    border:                      0;
+    padding:                     0;
+    spacing:                     0;
 }
 
 inputbar {
-    children: [prompt,entry];
-    background-color: @bg-col;
-    border-radius: 5px;
-    padding: 2px;
+    background-color:            @bg-alt;
+    text-color:                  @fg;
+    border:                      0 0 2px 0;
+    border-color:                @accent;
+    border-radius:               12px 12px 0 0;
+    padding:                     20px;
+    spacing:                     10px;
+    children:                    [ "prompt", "textbox-prompt-colon", "entry", "case-indicator" ];
 }
 
 prompt {
-    background-color: @blue;
-    padding: 8px 12px;
-    text-color: @bg-col;
-    border-radius: 5px;
-    margin: 10px 0px 10px 10px;
+    background-color:            transparent;
+    text-color:                  @accent;
+    font:                        "JetBrainsMono Nerd Font Bold 14";
 }
 
 textbox-prompt-colon {
-    expand: false;
-    str: ":";
+    background-color:            transparent;
+    text-color:                  @fg-alt;
+    expand:                      false;
+    str:                         "󰍉";
+    margin:                      0 5px 0 0;
 }
 
 entry {
-    padding: 8px 12px;
-    margin: 10px 0px 10px 5px;
-    text-color: @fg-col;
-    background-color: @bg-col;
+    background-color:            transparent;
+    text-color:                  @fg;
+    placeholder:                 "Search...";
+    placeholder-color:           @fg-alt;
+    cursor:                      text;
 }
 
-listview {
-    border: 0px 0px 0px;
-    padding: 6px 0px 0px;
-    margin: 10px 10px 0px 10px;
-    columns: 1;
-    lines: 8;
-    background-color: @bg-col;
-}
-
-element {
-    padding: 8px;
-    background-color: @bg-col;
-    text-color: @fg-col;
-    border-radius: 5px;
-}
-
-element-icon {
-    size: 28px;
-    margin: 0px 10px 0px 0px;
-}
-
-element selected {
-    background-color: @selected-col;
-    text-color: @fg-col2;
-}
-
-mode-switcher {
-    spacing: 0;
-}
-
-button {
-    padding: 10px;
-    background-color: @bg-col-light;
-    text-color: @grey;
-    vertical-align: 0.5; 
-    horizontal-align: 0.5;
-}
-
-button selected {
-  background-color: @bg-col;
-  text-color: @blue;
+case-indicator {
+    background-color:            transparent;
+    text-color:                  @fg-alt;
 }
 
 message {
-    background-color: @bg-col-light;
-    margin: 2px;
-    padding: 2px;
-    border-radius: 5px;
+    background-color:            @bg-alt;
+    border:                      2px 0 0 0;
+    border-color:                @accent;
+    padding:                     15px;
 }
 
 textbox {
-    padding: 6px;
-    margin: 20px 0px 0px 20px;
-    text-color: @blue;
-    background-color: @bg-col-light;
+    background-color:            transparent;
+    text-color:                  @fg;
 }
+
+listview {
+    background-color:            @bg;
+    border:                      0;
+    padding:                     10px;
+    spacing:                     5px;
+    scrollbar:                   true;
+    lines:                       8;
+    cycle:                       true;
+    dynamic:                     true;
+    fixed-height:                true;
+}
+
+scrollbar {
+    background-color:            @bg-alt;
+    handle-color:                @accent;
+    handle-width:                6px;
+    border:                      0;
+    border-radius:               6px;
+    padding:                     0;
+    margin:                      0 0 0 5px;
+}
+
+element {
+    background-color:            transparent;
+    text-color:                  @fg;
+    border:                      0;
+    border-radius:               8px;
+    padding:                     10px;
+    spacing:                     10px;
+}
+
+element normal.normal {
+    background-color:            transparent;
+    text-color:                  @fg;
+}
+
+element normal.urgent {
+    background-color:            transparent;
+    text-color:                  @urgent;
+}
+
+element normal.active {
+    background-color:            transparent;
+    text-color:                  @accent;
+}
+
+element selected.normal {
+    background-color:            @selected;
+    text-color:                  @bg;
+    border-radius:               8px;
+}
+
+element selected.urgent {
+    background-color:            @error;
+    text-color:                  @bg;
+}
+
+element selected.active {
+    background-color:            @accent;
+    text-color:                  @bg;
+}
+
+element alternate.normal {
+    background-color:            transparent;
+    text-color:                  @fg;
+}
+
+element alternate.urgent {
+    background-color:            transparent;
+    text-color:                  @urgent;
+}
+
+element alternate.active {
+    background-color:            transparent;
+    text-color:                  @accent;
+}
+
+element-icon {
+    background-color:            transparent;
+    size:                        32px;
+    cursor:                      pointer;
+}
+
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      pointer;
+    vertical-align:              0.5;
+}
+
+mode-switcher {
+    background-color:            @bg-alt;
+    border:                      2px 0 0 0;
+    border-color:                @accent;
+    border-radius:               0 0 12px 12px;
+    padding:                     10px;
+    spacing:                     10px;
+}
+
+button {
+    background-color:            transparent;
+    text-color:                  @fg-alt;
+    border-radius:               6px;
+    padding:                     10px 20px;
+    cursor:                      pointer;
+}
+
+button selected {
+    background-color:            @accent;
+    text-color:                  @bg;
+}
+
+/* Error message styling */
+error-message {
+    background-color:            @bg;
+    border:                      2px;
+    border-color:                @error;
+    border-radius:               12px;
+    padding:                     20px;
+}
+
+/* Additional elements for a polished look */
+num-filtered-rows,
+num-rows {
+    text-color:                  @fg-alt;
+    expand:                      false;
+}
+

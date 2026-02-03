@@ -210,6 +210,7 @@
 	openjdk
 	android-tools
     	cloudflared
+	kubernetes
 
 	# Devops
 	docker docker-compose
@@ -248,6 +249,9 @@
 	 # others
     	cbonsai
     	cowsay
+
+	# Media 
+	vlc gthumb
 
 	# File-Manager
 	kdePackages.dolphin
@@ -318,7 +322,9 @@
     };
   };
 
-  # Some programs need SUID wrappers, can be configured further or are
+  #Cloudflared config
+
+# Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
   # programs.gnupg.agent = {
@@ -329,7 +335,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  #services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

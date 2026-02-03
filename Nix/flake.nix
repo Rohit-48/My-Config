@@ -1,5 +1,5 @@
 {
-  description = "Giyu's Secure NixOS configuration with Hyprland";
+  description = "NixOS configuration with Hyprland";
 
   inputs = {
     # Main package repository
