@@ -80,6 +80,9 @@ Custom NixOS configuration with Hyprland window manager, optimized for developme
 - Wayland display protocol
 - Intel integrated graphics support
 
+**Editor**
+- nvim: NvChad with own config
+
 ## Notes
 
 - Designed for x86_64-linux systems
