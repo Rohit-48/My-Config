@@ -1,3 +1,6 @@
+# Minimal & Beautiful Dunst Configuration
+# Place this file in ~/.config/dunst/dunstrc
+
 [global]
     # Display
     monitor = 0
@@ -7,7 +10,7 @@
     width = (300, 400)
     height = 300
     origin = top-right
-    offset = 10x50
+    offset = 16x48
     
     # Progress bar
     progress_bar = true
@@ -17,16 +20,19 @@
     progress_bar_max_width = 300
     
     # Appearance
-    padding = 15
-    horizontal_padding = 15
-    text_icon_padding = 15
-    frame_width = 2
-    gap_size = 5
+    padding = 16
+    horizontal_padding = 16
+    text_icon_padding = 16
+    gap_size = 8
     separator_height = 2
+    frame_width = 2
+    corner_radius = 8
     
-    # Text
-    font = JetBrainsMono Nerd Font 10
-    line_height = 0
+    # Typography
+    font = Inter 10
+    line_height = 4
+    
+    # Content
     markup = full
     format = "<b>%s</b>\n%b"
     alignment = left
@@ -41,54 +47,66 @@
     
     # Icons
     icon_position = left
-    min_icon_size = 32
+    min_icon_size = 48
     max_icon_size = 64
-    icon_path = /usr/share/icons/Papirus-Dark/48x48/status/:/usr/share/icons/Papirus-Dark/48x48/devices/:/usr/share/icons/Papirus-Dark/48x48/apps/
+    icon_theme = Papirus-Dark
+    enable_recursive_icon_lookup = true
     
     # History
     sticky_history = yes
     history_length = 20
     
     # Misc
-    dmenu = /usr/bin/rofi -dmenu -p dunst:
-    browser = /usr/bin/google-chrome-stable
+    dmenu = /usr/bin/rofi -dmenu -p dunst
+    browser = /usr/bin/xdg-open
     always_run_script = true
     title = Dunst
     class = Dunst
-    corner_radius = 10
     ignore_dbusclose = false
     
     # Mouse
     mouse_left_click = do_action, close_current
-    mouse_middle_click = do_action, close_current
-    mouse_right_click = close_all
+    mouse_middle_click = close_all
+    mouse_right_click = close_current
 
-# Catppuccin Mocha Theme
 [urgency_low]
+    # Minimal gray theme
     background = "#1e1e2e"
     foreground = "#cdd6f4"
-    frame_color = "#89b4fa"
-    timeout = 5
-
+    frame_color = "#313244"
+    timeout = 4
+    
 [urgency_normal]
+    # Subtle blue accent
     background = "#1e1e2e"
     foreground = "#cdd6f4"
     frame_color = "#89b4fa"
-    timeout = 10
-
+    timeout = 8
+    
 [urgency_critical]
+    # Attention-grabbing red
     background = "#1e1e2e"
-    foreground = "#cdd6f4"
+    foreground = "#f38ba8"
     frame_color = "#f38ba8"
     timeout = 0
 
-# Rules
+# Application-specific rules
 [spotify]
     appname = Spotify
     urgency = low
-    frame_color = "#1db954"
-
+    timeout = 5
+    
 [discord]
     appname = discord
     urgency = low
-    frame_color = "#5865f2"
+    timeout = 6
+
+[volume]
+    summary = "Volume"
+    urgency = low
+    timeout = 2
+
+[brightness]
+    summary = "Brightness"
+    urgency = low
+    timeout = 2
