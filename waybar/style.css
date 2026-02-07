@@ -1,4 +1,8 @@
-
+/* Lofi Cafe Color Palette */
+@define-color background #1a1d2e;   /* Deep navy from the night sky/exterior */
+@define-color foreground #d1e9f2;   /* Soft white from the interior lights */
+@define-color color0     #023047;   /* Dark slate blue (darker modules) */
+@define-color color15    #f1faee;   /* Warm peach/orange (lighter modules, from cafe glow) */
 
 * {
   color: @foreground;
@@ -9,7 +13,7 @@
 }
 
 window#waybar {
-  background: transparent;
+  background: @transparent;
 }
 
 window#waybar.hidden {
@@ -100,7 +104,7 @@ window#waybar.hidden {
 }
 
 #taskbar {
-  background: transparent;
+  background: @transparent;
   border-radius: 10px;
   padding: 0px 5px;
   margin: 6px 5px;
@@ -130,7 +134,6 @@ window#waybar.hidden {
   background: @color15;
   color: @color0;
 }
-
 
 #battery {
   background: @color0;
