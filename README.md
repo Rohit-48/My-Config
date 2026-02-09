@@ -1,7 +1,7 @@
 # NixOS Hyprland Configuration
 
 <div align="center">
-  <img src="Nixos-logo.png" alt="NixOS Logo" width="200"/>
+  <img src="./images/Nixos-logo.png" alt="NixOS Logo" width="200"/>
 </div>
 
 ## NixOS 26.05 (Yarara)
@@ -9,6 +9,15 @@
 ## Overview
 
 Custom NixOS configuration with Hyprland window manager, optimized for development productivity.
+
+## Images
+
+| | |
+|:---:|:---:|
+| ![Fastfetch](./images/fastfetch-ss.png) | ![Htop](./images/htops-ss.png) |
+| ![Btop](./images/btop.png) | ![Rofi](./images/rofi.png) |
+| ![Cursor](./images/cursor-ss.png) | ![Discord & Spotify](./images/discord-spotify-ss.png) |
+| ![3 Apps](./images/ss-3apps.png) | ![4 nvim](./images/nvim.png) |
 
 ## Key Features
 
