@@ -66,7 +66,7 @@
   networking.firewall = {
     enable = true;
     # Only open ports you actually need
-    # allowedTCPPorts = [ 3000 8080 5173 ];  # Uncomment for web dev
+    allowedTCPPorts = [ 3000 8080 5173 ];  # Uncomment for web dev
     # allowedUDPPorts = [ ];
     
     # Log dropped packets (useful for debugging)
@@ -176,6 +176,25 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # Tmux configuration
+  programs.tmux = {
+    enable = true;
+    plugins = with pkgs.tmuxPlugins; [
+      sensible
+      catppuccin
+    ];
+    extraConfig = ''
+      	set -g mouse on
+      	set -g history-limit 10000
+      	set -g @catppuccin_flavour "mocha"
+      	set -g @plugin 'tmux-plugin/tpm'
+	set -g @plugin 'tmux-plugin/tmux-sensible'
+	set -g @plugin 'tmux-plugin/vim-tmux-navigator'
+	set -g @catppuccin_status_modules_right ""
+	set -g @catppuccin_status_modules_left "session"
+    '';
+  };
+
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -217,10 +236,12 @@
 
 	# Application
 	brave discord spotify obsidian chromium obs-studio
-
+	
 	#code-editor
-	vscode  zed-editor
-	code-cursor 
+	vscode  #love and hate 
+	code-cursor #love to vibe-code in ts
+	jetbrains.rust-rover  # speciallyy for my rust project, preem stuff.
+	jetbrains.datagrip   # management choom 
 
 	# math
 	texliveFull   # LaTeX (assignments, reports)
@@ -232,6 +253,7 @@
 	waybar
 	hyprpaper
 	hyprland
+	hyprshot
 	rofi
 	dunst
 	slurp
@@ -255,7 +277,7 @@
 
 	# File-Manager
 	kdePackages.dolphin
-	ntfs3g
+	ntfs3g exfat
 	kdePackages.qtsvg
 
 	# wallpaper
@@ -266,6 +288,12 @@
 	nmap           # Network scanning
     	wireshark      # Network analysis
     	tcpdump        # Packet analyzer
+
+	#ai cli  tools i am doing it i am doing it oooooooooo.
+	opencode
+	claude-code
+	ollama
+
   ];
   
   # Fonts
