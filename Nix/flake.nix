@@ -3,7 +3,7 @@
 
   inputs = {
     # Main package repository
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/0182a361324364ae3f436a63005877674cf45efb";
     
     # Hyprland compositor (built from source with submodules)
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";

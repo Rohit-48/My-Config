@@ -237,11 +237,12 @@
 	# Application
 	brave discord spotify obsidian chromium obs-studio
 	
-	#code-editor
+	#code-editor soon i will be  a vim guy.
 	vscode  #love and hate 
 	code-cursor #love to vibe-code in ts
 	jetbrains.rust-rover  # speciallyy for my rust project, preem stuff.
-	jetbrains.datagrip   # management choom 
+	jetbrains.datagrip   # management choom
+	zed-editor   # oone more pokemon in house
 
 	# math
 	texliveFull   # LaTeX (assignments, reports)
@@ -279,6 +280,9 @@
 	kdePackages.dolphin
 	ntfs3g exfat
 	kdePackages.qtsvg
+
+	#PDF reader 
+	kdePackages.okular
 
 	# wallpaper
     	swww
