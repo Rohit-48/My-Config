@@ -39,6 +39,8 @@ local servers = {
   -- Additional useful servers
   "lua_ls",         -- Lua (for Neovim config)
   "vimls",          -- Vimscript
+  
+  -- Note: rust-analyzer is handled by rustaceanvim plugin, not lspconfig
 }
 
 -- Custom on_attach function for LSP-specific keybindings

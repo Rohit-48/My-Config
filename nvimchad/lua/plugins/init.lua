@@ -70,6 +70,10 @@ return {
         -- Lua/Vim
         "lua-language-server",
         "vim-language-server",
+        
+        -- Rust
+        "rust-analyzer",
+        "rustfmt",
       },
     },
   },
@@ -96,6 +100,9 @@ return {
         -- Documentation & Config
         "markdown", "markdown_inline",
         "regex", "comment",
+        
+        -- Rust
+        "rust",
         
         -- Additional
         "git_config", "gitignore", "gitcommit",
@@ -313,6 +320,68 @@ return {
     },
   },
 
+  -- Rust tools (enhanced Rust development) - using rustaceanvim (successor to rust-tools)
+  {
+    "mrcjkb/rustaceanvim",
+    version = "^5", -- Recommended
+    ft = "rust",
+    lazy = false,
+    config = function()
+      vim.g.rustaceanvim = {
+        tools = {
+          inlay_hints = {
+            auto = true,
+            show_parameter_hints = true,
+            parameter_hints_prefix = "<- ",
+            other_hints_prefix = "=> ",
+            max_len_align = false,
+            max_len_align_padding = 1,
+            right_align = false,
+            right_align_padding = 7,
+            highlight = "Comment",
+          },
+          hover_actions = {
+            auto_focus = true,
+          },
+        },
+        server = {
+          on_attach = function(client, bufnr)
+            -- You can add custom on_attach logic here
+          end,
+          default_settings = {
+            ["rust-analyzer"] = {
+              cargo = {
+                allFeatures = true,
+                loadOutDirsFromCheck = true,
+                buildScripts = {
+                  enable = true,
+                },
+              },
+              checkOnSave = true,
+              check = {
+                command = "clippy",
+                extraArgs = { "--no-deps" },
+              },
+              procMacro = {
+                enable = true,
+              },
+            },
+          },
+        },
+      }
+    end,
+  },
+
+  -- Cargo.toml syntax highlighting
+  {
+    "Saecki/crates.nvim",
+    event = { "BufRead Cargo.toml" },
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("crates").setup()
+    end,
+  },
+
   -- Color highlighter
   {
     "NvChad/nvim-colorizer.lua",
@@ -328,6 +397,25 @@ return {
         require("colorizer").attach_to_buffer(0)
       end, 0)
     end,
+  },
+
+  {
+    "christoomey/vim-tmux-navigator",
+    cmd = {
+      "TmuxNavigateLeft",
+      "TmuxNavigateDown",
+      "TmuxNavigateUp",
+      "TmuxNavigateRight",
+      "TmuxNavigatePrevious",
+      "TmuxNavigatorProcessList",
+    },
+    keys = {
+      { "<C-h>", "<cmd><C-U>TmuxNavigateLeft<cr>", desc = "Tmux left" },
+      { "<C-j>", "<cmd><C-U>TmuxNavigateDown<cr>", desc = "Tmux down" },
+      { "<C-k>", "<cmd><C-U>TmuxNavigateUp<cr>", desc = "Tmux up" },
+      { "<C-l>", "<cmd><C-U>TmuxNavigateRight<cr>", desc = "Tmux right" },
+      { "<C-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>", desc = "Tmux previous" },
+    },
   },
 
   -- Icons
