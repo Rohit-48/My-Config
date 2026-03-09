@@ -200,7 +200,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   	# Dev utils
-	neovim git gh vim wget curl tmux unzip ripgrep fd tree tig ffmpeg-full starship wf-recorder
+	neovim git gh vim wget jq curl tmux unzip ripgrep fd tree tig ffmpeg-full starship wf-recorder
 	n8n ollama fzf eza bat zoxide
 
 	#sys monitoring 
@@ -292,6 +292,7 @@
 	nmap           # Network scanning
     	wireshark      # Network analysis
     	tcpdump        # Packet analyzer
+	dig            
 
 	#ai cli  tools i am doing it i am doing it oooooooooo.
 	opencode

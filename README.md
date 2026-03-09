@@ -12,12 +12,11 @@ Custom NixOS configuration with Hyprland window manager, optimized for developme
 
 ## Images
 
-| | |
-|:---:|:---:|
-| ![Fastfetch](./images/fastfetch-ss.png) | ![Htop](./images/htops-ss.png) |
-| ![Btop](./images/btop.png) | ![Rofi](./images/rofi.png) |
-| ![Cursor](./images/cursor-ss.png) | ![Discord & Spotify](./images/discord-spotify-ss.png) |
-| ![3 Apps](./images/ss-3apps.png) | ![4 nvim](./images/nvim.png) |
+| | | |
+|:---:|:---:|:---:|
+| ![Browser](./images/borwser.png) | ![Btop](./images/btop.png) | ![Discord & Spotify](./images/dis-spo.png) |
+| ![Fastfetch](./images/fastfetch.png) | ![Nitch](./images/nitch.png) | ![Rofi](./images/rofi.png) |
+| ![VS Code](./images/vscode.png) | ![Waybar](./images/waybar.png) | ![Zed](./images/zed.png) |
 
 ## Key Features
 
@@ -116,5 +115,4 @@ Custom NixOS configuration with Hyprland window manager, optimized for developme
 All configurations have been customized for personal use.
 
 ---
-
 
