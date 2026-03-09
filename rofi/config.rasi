@@ -1,281 +1,231 @@
 /**
- * Beautiful Modern Rofi Configuration
- * A sleek, minimalist design with smooth animations
+ * CYBERPUNK ROFI THEME
+ * Yellow #FFE000 on Black #0a0a0a | 6px radius everywhere
  */
 
 configuration {
-    modi:                        "drun,run,window,ssh";
-    show-icons:                  true;
-    icon-theme:                  "Papirus-Dark";
-    display-drun:                "Applications";
-    display-run:                 "Run";
-    display-window:              "Windows";
-    display-ssh:                 "SSH";
-    drun-display-format:         "{name}";
-    window-format:               "{w} · {c} · {t}";
-    font:                        "JetBrainsMono Nerd Font 12";
-    
-    /* Behavior */
-    terminal:                    "ghostty";
-    ssh-client:                  "ssh";
-    ssh-command:                 "{terminal} -e {ssh-client} {host}";
-    matching:                    "fuzzy";
-    scroll-method:               0;
-    disable-history:             true;
-    sidebar-mode:                true;
-    
-    /* Performance */
-    lazy-grab:                   true;
-    dpi:                         96;
+    modi:                "drun,run,window,ssh";
+    show-icons:          true;
+    icon-theme:          "Papirus-Dark";
+    display-drun:        " Apps";
+    display-run:         " Run";
+    display-window:      " Win";
+    display-ssh:         "󰣀 SSH";
+    drun-display-format: "{name}";
+    window-format:       "{w} · {c} · {t}";
+    font:                "JetBrainsMono Nerd Font 12";
+
+    terminal:            "ghostty";
+    matching:            "fuzzy";
+    scroll-method:       0;
+    disable-history:     false;
+    sidebar-mode:        true;
+
+    lazy-grab:           true;
+    dpi:                 96;
 }
 
 * {
-    /* Color Palette - Nord-inspired with custom accents */
-    bg:                          #1e2127;
-    bg-alt:                      #282c34;
-    fg:                          #abb2bf;
-    fg-alt:                      #5c6370;
-    
-    accent:                      #f1faee;
-    accent-alt:                  #fefae0;
-    
-    success:                     #98c379;
-    warning:                     #e5c07b;
-    error:                       #e06c75;
-    
-    urgent:                      #be5046;
-    selected:                    #caf0f8;
-    
-    /* Base colors */
-    background:                  @bg;
-    foreground:                  @fg;
-    
-    normal-background:           @bg;
-    normal-foreground:           @fg;
-    alternate-normal-background: @bg-alt;
-    alternate-normal-foreground: @fg;
-    selected-normal-background:  @selected;
-    selected-normal-foreground:  @bg;
-    
-    active-background:           @bg;
-    active-foreground:           @accent;
-    alternate-active-background: @bg-alt;
-    alternate-active-foreground: @accent;
-    selected-active-background:  @accent;
-    selected-active-foreground:  @bg;
-    
-    urgent-background:           @bg;
-    urgent-foreground:           @error;
-    alternate-urgent-background: @bg-alt;
-    alternate-urgent-foreground: @error;
-    selected-urgent-background:  @error;
-    selected-urgent-foreground:  @bg;
-    
-    /* Borders and spacing */
-    border-color:                @accent;
-    separatorcolor:              @accent-alt;
-    
+    /* ── Cyberpunk palette ── */
+    bg:        #0a0a0a;
+    bg-panel:  #111111;
+    bg-alt:    #1c1c1c;
+    yellow:    #FFE000;
+    yellow-d:  #b8a000;
+    yellow-bg: #1a1700;     /* very dark yellow tint for selected bg */
+    fg:        #FFE000;
+    fg-dim:    #666666;
+    red:       #ff2244;
+    green:     #00ff88;
+
     background-color:            transparent;
     text-color:                  @fg;
-    
+    border-color:                @yellow;
+    separatorcolor:              @yellow-d;
     spacing:                     0;
-    border-radius:               12px;
+
+    normal-background:           @bg;
+    normal-foreground:           @fg-dim;
+    alternate-normal-background: @bg-alt;
+    alternate-normal-foreground: @fg-dim;
+    selected-normal-background:  @yellow-bg;
+    selected-normal-foreground:  @yellow;
+
+    active-background:           @bg;
+    active-foreground:           @yellow;
+    alternate-active-background: @bg-alt;
+    alternate-active-foreground: @yellow;
+    selected-active-background:  @yellow-bg;
+    selected-active-foreground:  @yellow;
+
+    urgent-background:           @bg;
+    urgent-foreground:           @red;
+    alternate-urgent-background: @bg-alt;
+    alternate-urgent-foreground: @red;
+    selected-urgent-background:  #2a0000;
+    selected-urgent-foreground:  @red;
 }
 
 window {
-    background-color:            @bg;
-    border:                      2px;
-    border-color:                @accent;
-    border-radius:               12px;
-    padding:                     0;
-    width:                       50%;
-    
-    /* Shadow for depth */
-    transparency:                "real";
+    background-color: @bg;
+    border:           2px;
+    border-color:     @yellow;
+    border-radius:    6px;
+    padding:          0;
+    width:            46%;
 }
 
 mainbox {
-    background-color:            @bg;
-    border:                      0;
-    padding:                     0;
-    spacing:                     0;
+    background-color: @bg;
+    border:           0;
+    padding:          0;
+    spacing:          0;
 }
 
 inputbar {
-    background-color:            @bg-alt;
-    text-color:                  @fg;
-    border:                      0 0 2px 0;
-    border-color:                @accent;
-    border-radius:               12px 12px 0 0;
-    padding:                     20px;
-    spacing:                     10px;
-    children:                    [ "prompt", "textbox-prompt-colon", "entry", "case-indicator" ];
+    background-color: @bg-panel;
+    text-color:       @fg;
+    border:           0 0 1px 0;
+    border-color:     @yellow-d;
+    border-radius:    6px 6px 0 0;
+    padding:          14px 18px;
+    spacing:          10px;
+    children:         [ "prompt", "textbox-prompt-colon", "entry", "case-indicator" ];
 }
 
 prompt {
-    background-color:            transparent;
-    text-color:                  @accent;
-    font:                        "JetBrainsMono Nerd Font Bold 14";
+    background-color: transparent;
+    text-color:       @yellow;
+    font:             "JetBrainsMono Nerd Font Bold 13";
 }
 
 textbox-prompt-colon {
-    background-color:            transparent;
-    text-color:                  @fg-alt;
-    expand:                      false;
-    str:                         "󰍉";
-    margin:                      0 5px 0 0;
+    background-color: transparent;
+    text-color:       @yellow-d;
+    expand:           false;
+    str:              "󰍉";
+    margin:           0 6px 0 0;
 }
 
 entry {
-    background-color:            transparent;
-    text-color:                  @fg;
-    placeholder:                 "Search...";
-    placeholder-color:           @fg-alt;
-    cursor:                      text;
+    background-color: transparent;
+    text-color:       @fg;
+    placeholder:      "search...";
+    placeholder-color: @fg-dim;
+    cursor:           text;
 }
 
 case-indicator {
-    background-color:            transparent;
-    text-color:                  @fg-alt;
-}
-
-message {
-    background-color:            @bg-alt;
-    border:                      2px 0 0 0;
-    border-color:                @accent;
-    padding:                     15px;
-}
-
-textbox {
-    background-color:            transparent;
-    text-color:                  @fg;
+    background-color: transparent;
+    text-color:       @fg-dim;
 }
 
 listview {
-    background-color:            @bg;
-    border:                      0;
-    padding:                     10px;
-    spacing:                     5px;
-    scrollbar:                   true;
-    lines:                       8;
-    cycle:                       true;
-    dynamic:                     true;
-    fixed-height:                true;
+    background-color: @bg;
+    border:           0;
+    padding:          8px;
+    spacing:          2px;
+    scrollbar:        true;
+    lines:            9;
+    cycle:            true;
+    dynamic:          true;
+    fixed-height:     true;
 }
 
 scrollbar {
-    background-color:            @bg-alt;
-    handle-color:                @accent;
-    handle-width:                6px;
-    border:                      0;
-    border-radius:               6px;
-    padding:                     0;
-    margin:                      0 0 0 5px;
+    background-color: @bg-alt;
+    handle-color:     @yellow-d;
+    handle-width:     4px;
+    border:           0;
+    border-radius:    6px;
+    margin:           0 0 0 6px;
 }
 
 element {
-    background-color:            transparent;
-    text-color:                  @fg;
-    border:                      0;
-    border-radius:               8px;
-    padding:                     10px;
-    spacing:                     10px;
+    background-color: transparent;
+    text-color:       @fg-dim;
+    border:           0;
+    border-radius:    6px;
+    padding:          9px 12px;
+    spacing:          10px;
 }
 
 element normal.normal {
-    background-color:            transparent;
-    text-color:                  @fg;
-}
-
-element normal.urgent {
-    background-color:            transparent;
-    text-color:                  @urgent;
-}
-
-element normal.active {
-    background-color:            transparent;
-    text-color:                  @accent;
-}
-
-element selected.normal {
-    background-color:            @selected;
-    text-color:                  @bg;
-    border-radius:               8px;
-}
-
-element selected.urgent {
-    background-color:            @error;
-    text-color:                  @bg;
-}
-
-element selected.active {
-    background-color:            @accent;
-    text-color:                  @bg;
+    background-color: transparent;
+    text-color:       @fg-dim;
 }
 
 element alternate.normal {
-    background-color:            transparent;
-    text-color:                  @fg;
+    background-color: transparent;
+    text-color:       @fg-dim;
 }
 
-element alternate.urgent {
-    background-color:            transparent;
-    text-color:                  @urgent;
+element selected.normal {
+    background-color: @yellow-bg;
+    text-color:       @yellow;
+    border:           1px;
+    border-color:     @yellow-d;
+    border-radius:    6px;
 }
 
-element alternate.active {
-    background-color:            transparent;
-    text-color:                  @accent;
-}
+element normal.active    { text-color: @yellow; }
+element selected.active  { background-color: @yellow-bg; text-color: @yellow; border-radius: 6px; }
+element normal.urgent    { text-color: @red; }
+element selected.urgent  { background-color: #2a0000; text-color: @red; border-radius: 6px; }
 
 element-icon {
-    background-color:            transparent;
-    size:                        32px;
-    cursor:                      pointer;
+    background-color: transparent;
+    size:             28px;
+    cursor:           pointer;
 }
 
 element-text {
-    background-color:            transparent;
-    text-color:                  inherit;
-    cursor:                      pointer;
-    vertical-align:              0.5;
+    background-color: transparent;
+    text-color:       inherit;
+    cursor:           pointer;
+    vertical-align:   0.5;
 }
 
 mode-switcher {
-    background-color:            @bg-alt;
-    border:                      2px 0 0 0;
-    border-color:                @accent;
-    border-radius:               0 0 12px 12px;
-    padding:                     10px;
-    spacing:                     10px;
+    background-color: @bg-panel;
+    border:           1px 0 0 0;
+    border-color:     @yellow-d;
+    border-radius:    0 0 6px 6px;
+    padding:          8px;
+    spacing:          8px;
 }
 
 button {
-    background-color:            transparent;
-    text-color:                  @fg-alt;
-    border-radius:               6px;
-    padding:                     10px 20px;
-    cursor:                      pointer;
+    background-color: transparent;
+    text-color:       @fg-dim;
+    border-radius:    6px;
+    padding:          8px 16px;
+    cursor:           pointer;
 }
 
 button selected {
-    background-color:            @accent;
-    text-color:                  @bg;
+    background-color: @yellow-bg;
+    text-color:       @yellow;
+    border:           1px;
+    border-color:     @yellow-d;
 }
 
-/* Error message styling */
+message {
+    background-color: @bg-panel;
+    border:           1px 0 0 0;
+    border-color:     @yellow-d;
+    padding:          12px;
+}
+
+textbox {
+    background-color: transparent;
+    text-color:       @fg;
+}
+
 error-message {
-    background-color:            @bg;
-    border:                      2px;
-    border-color:                @error;
-    border-radius:               12px;
-    padding:                     20px;
+    background-color: @bg;
+    border:           2px;
+    border-color:     @red;
+    border-radius:    6px;
+    padding:          20px;
 }
-
-/* Additional elements for a polished look */
-num-filtered-rows,
-num-rows {
-    text-color:                  @fg-alt;
-    expand:                      false;
-}
-
