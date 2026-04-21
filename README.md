@@ -10,14 +10,6 @@
 
 Custom NixOS configuration with Hyprland window manager, optimized for development productivity.
 
-## Images
-
-| | | |
-|:---:|:---:|:---:|
-| ![Browser](./images/borwser.png) | ![Btop](./images/btop.png) | ![Discord & Spotify](./images/dis-spo.png) |
-| ![Fastfetch](./images/fastfetch.png) | ![Nitch](./images/nitch.png) | ![Rofi](./images/rofi.png) |
-| ![VS Code](./images/vscode.png) | ![Waybar](./images/waybar.png) | ![Zed](./images/zed.png) |
-
 ## Key Features
 
 **Desktop Environment**
