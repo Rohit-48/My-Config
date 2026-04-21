@@ -49,33 +49,22 @@
 # resize-overlay-duration = 4s 200ms
 #
 #
-# ══════════════════════════════════════════
-# GHOSTTY CONFIG — CYBERPUNK THEME
-# ══════════════════════════════════════════
-
-# ══════════════════════════════════════════
-# GHOSTTY CONFIG — CYBERPUNK THEME
-# Inline colors, no external theme file
-# ══════════════════════════════════════════
-
 # Font
 font-family = JetBrainsMono Nerd Font
-font-size   = 12
+font-size = 14
 
 # Rendering
-background-opacity = 0.92
+background-opacity = 0.95
 
 # Cursor
 cursor-style = block
-cursor-color = #FFE000
-# Note: cursor-text-color is NOT a valid Ghostty field — removed
 
-# Shell
-shell-integration = zsh
+
 
 # Scrollback
 scrollback-limit = 10000
 
-# Window
-window-padding-x = 10
-window-padding-y = 8
+# Shell (important on NixOS)
+shell-integration = zsh
+theme = my-dark-theme
+

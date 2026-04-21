@@ -1,37 +1,22 @@
+background = #0f1117
+foreground = #cdd6f4
+
+palette = 0=#45475a
+palette = 1=#f38ba8
+palette = 2=#a6e3a1
+palette = 3=#f9e2af
+palette = 4=#89b4fa
+palette = 5=#cba6f7
+palette = 6=#94e2d5
+palette = 7=#bac2de
+
+palette = 8=#585b70
+palette = 9=#f38ba8
+palette = 10=#a6e3a1
+palette = 11=#f9e2af
+palette = 12=#89b4fa
+palette = 13=#cba6f7
+palette = 14=#94e2d5
+palette = 15=#a6adc8
 
 
-# ── Inline color palette (cyberpunk) ──────────────────────────
-background = #0a0a0a
-foreground = #FFE000
-
-# Black
-palette = 0=#0f0f0f
-palette = 8=#333333
-
-# Red
-palette = 1=#ff2244
-palette = 9=#ff4466
-
-# Green
-palette = 2=#00ff88
-palette = 10=#33ffaa
-
-# Yellow (primary accent)
-palette = 3=#FFE000
-palette = 11=#fff066
-
-# Blue
-palette = 4=#0088ff
-palette = 12=#33aaff
-
-# Magenta
-palette = 5=#cc00ff
-palette = 13=#dd44ff
-
-# Cyan
-palette = 6=#00ccff
-palette = 14=#33ddff
-
-# White
-palette = 7=#cccccc
-palette = 15=#eeeeee

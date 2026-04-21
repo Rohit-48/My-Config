@@ -66,7 +66,7 @@
   networking.firewall = {
     enable = true;
     # Only open ports you actually need
-    allowedTCPPorts = [ 3000 8080 5173 ];  # Uncomment for web dev
+      allowedTCPPorts = [ 3000 3001 8080 5173 ]; # Uncomment for web dev
     # allowedUDPPorts = [ ];
     
     # Log dropped packets (useful for debugging)
@@ -104,6 +104,16 @@
     extraGroups = [ "networkmanager" "wheel" "video" "audio" "docker"];
     shell = pkgs.zsh;
     packages = with pkgs; [];
+  };
+
+  #Sound stuff
+  hardware.enableAllFirmware = true;
+
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
   };
 
   # Display Manager
@@ -194,7 +204,7 @@
 	set -g @catppuccin_status_modules_left "session"
     '';
   };
-
+  
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -230,6 +240,7 @@
 	android-tools
     	cloudflared
 	kubernetes
+	requestly
 
 	# Devops
 	docker docker-compose
@@ -242,7 +253,7 @@
 	code-cursor #love to vibe-code in ts
 	jetbrains.rust-rover  # speciallyy for my rust project, preem stuff.
 	jetbrains.datagrip   # management choom
-	zed-editor   # oone more pokemon in house
+	 zed-editor   # oone more pokemon in house
 
 	# math
 	texliveFull   # LaTeX (assignments, reports)
@@ -296,8 +307,11 @@
 
 	#ai cli  tools i am doing it i am doing it oooooooooo.
 	opencode
-	claude-code
-	ollama
+	ollama 
+
+	# Sounds
+	sof-firmware easyeffects
+	
 
   ];
   

@@ -1,3 +1,53 @@
+local mason_tools = {
+  -- Web Development
+  "html-lsp",
+  "css-lsp",
+  "typescript-language-server",
+  "eslint-lsp",
+  "tailwindcss-language-server",
+  "emmet-ls",
+  "json-lsp",
+  "graphql-language-service-cli",
+
+  -- Formatters (Web)
+  "prettier",
+  "stylua",
+
+  -- DevOps & Infrastructure
+  "dockerfile-language-server",
+  "docker-compose-language-service",
+  "terraform-ls",
+  "ansible-language-server",
+  "helm-ls",
+  "yaml-language-server",
+  "bash-language-server",
+  "tflint",
+
+  -- Formatters (DevOps)
+  "shfmt",
+  "yamlfmt",
+
+  -- Cloud
+  "azure-pipelines-language-server",
+
+  -- Python/AI/ML
+  "pyright",
+  "ruff",
+  "black",
+  "isort",
+
+  -- Documentation
+  "marksman",
+  "markdown-toc",
+
+  -- Lua/Vim
+  "lua-language-server",
+  "vim-language-server",
+
+  -- Rust
+  "rust-analyzer",
+}
+
 return {
   {
     "stevearc/conform.nvim",
@@ -19,62 +69,18 @@ return {
 
   -- Mason: LSP/DAP/Linter/Formatter installer
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
+  },
+
+  {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    dependencies = { "mason-org/mason.nvim" },
+    event = "VeryLazy",
     opts = {
-      ensure_installed = {
-        -- Web Development
-        "html-lsp",
-        "css-lsp",
-        "typescript-language-server",
-        "eslint-lsp",
-        "tailwindcss-language-server",
-        "emmet-ls",
-        "json-lsp",
-        "graphql-language-service-cli",
-        
-        -- Formatters (Web)
-        "prettier",
-        "stylua",
-        
-        -- DevOps & Infrastructure
-        "dockerfile-language-server",
-        "docker-compose-language-service",
-        "terraform-ls",
-        "ansible-language-server",
-        "helm-ls",
-        "yaml-language-server",
-        "bash-language-server",
-        "tflint",
-        
-        -- Formatters (DevOps)
-        "shfmt",
-        "yamlfmt",
-        
-        -- Cloud
-        "azure-pipelines-language-server",
-        
-        -- Networking
-        "nginx-language-server",
-        
-        -- Python/AI/ML
-        "pyright",
-        "ruff-lsp",
-        "ruff",
-        "black",
-        "isort",
-        
-        -- Documentation
-        "marksman",
-        "markdown-toc",
-        
-        -- Lua/Vim
-        "lua-language-server",
-        "vim-language-server",
-        
-        -- Rust
-        "rust-analyzer",
-        "rustfmt",
-      },
+      ensure_installed = mason_tools,
+      auto_update = false,
+      run_on_start = false,
+      start_delay = 3000,
     },
   },
 
@@ -85,25 +91,25 @@ return {
       ensure_installed = {
         -- Base
         "vim", "lua", "vimdoc",
-        
+
         -- Web Development
         "html", "css", "scss", "javascript", "typescript", "tsx", "jsx",
         "json", "jsonc", "graphql", "vue", "svelte",
-        
+
         -- DevOps & Infrastructure
         "dockerfile", "yaml", "toml", "hcl", "terraform",
         "bash", "fish", "make",
-        
+
         -- Python/AI/ML
         "python", "requirements",
-        
+
         -- Documentation & Config
         "markdown", "markdown_inline",
         "regex", "comment",
-        
+
         -- Rust
         "rust",
-        
+
         -- Additional
         "git_config", "gitignore", "gitcommit",
         "ssh_config",
@@ -190,24 +196,31 @@ return {
   -- REST client (for API testing)
   {
     "rest-nvim/rest.nvim",
+    enabled = false,
     ft = "http",
     dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require("rest-nvim").setup({
-        result_split_horizontal = false,
-        result_split_in_place = false,
-        skip_ssl_verification = false,
-        encode_url = true,
+    init = function()
+      vim.g.rest_nvim = {
+        request = {
+          skip_ssl_verification = false,
+          hooks = {
+            encode_url = true,
+          },
+        },
+        response = {
+          hooks = {
+            decode_url = true,
+            format = true,
+          },
+        },
         highlight = {
-          enabled = true,
+          enable = true,
           timeout = 150,
         },
-        result = {
-          show_url = true,
-          show_http_info = true,
-          show_headers = true,
+        ui = {
+          winbar = true,
         },
-      })
+      }
     end,
   },
 
@@ -247,7 +260,6 @@ return {
       "nvim-telescope/telescope.nvim",
       "mfussenegger/nvim-dap-python",
     },
-    branch = "regexp",
     ft = "python",
     cmd = "VenvSelect",
     opts = {

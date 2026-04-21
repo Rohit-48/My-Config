@@ -2,6 +2,8 @@ return {
   defaults = { lazy = true },
   install = { colorscheme = { "nvchad" } },
 
+  -- rest.nvim needs LuaRocks, but hererocks cannot build on this host without
+  -- readline headers. Keep rocks off until LuaRocks is available system-wide.
   rocks = { enabled = false },
 
   ui = {
