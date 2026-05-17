@@ -1,14 +1,32 @@
 # NixOS Hyprland Configuration
 
-<div align="center">
-  <img src="./images/Nixos-logo.png" alt="NixOS Logo" width="200"/>
-</div>
-
 ## NixOS 26.05 (Yarara)
 
 ## Overview
 
 Custom NixOS configuration with Hyprland window manager, optimized for development productivity.
+
+## Screenshots
+
+| Browser | Discord & Spotify |
+| --- | --- |
+| <img src="./images/browser.png" alt="Browser screenshot" width="420"/> | <img src="./images/discord-spotify.png" alt="Discord and Spotify screenshot" width="420"/> |
+
+| Fastfetch | GThumb & Obsidian |
+| --- | --- |
+| <img src="./images/fastfetch1.png" alt="Fastfetch screenshot" width="420"/> | <img src="./images/gthumb-obsidian.png" alt="GThumb and Obsidian screenshot" width="420"/> |
+
+| App Managers | Neovim |
+| --- | --- |
+| <img src="./images/managers.png" alt="Application managers screenshot" width="420"/> | <img src="./images/nvim.png" alt="Neovim screenshot" width="420"/> |
+
+| PDF Viewer | Rofi |
+| --- | --- |
+| <img src="./images/pdfviewer.png" alt="PDF viewer screenshot" width="420"/> | <img src="./images/rofi.png" alt="Rofi launcher screenshot" width="420"/> |
+
+| VS Code |
+| --- |
+| <img src="./images/vscode.png" alt="VS Code screenshot" width="420"/> |
 
 ## Key Features
 
@@ -107,4 +125,3 @@ Custom NixOS configuration with Hyprland window manager, optimized for developme
 All configurations have been customized for personal use.
 
 ---
-
