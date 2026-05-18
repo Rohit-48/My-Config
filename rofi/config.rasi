@@ -1,281 +1,196 @@
-/**
- * Beautiful Modern Rofi Configuration
- * A sleek, minimalist design with smooth animations
- */
-
 configuration {
-    modi:                        "drun,run,window,ssh";
-    show-icons:                  true;
-    icon-theme:                  "Papirus-Dark";
-    display-drun:                "Applications";
-    display-run:                 "Run";
-    display-window:              "Windows";
-    display-ssh:                 "SSH";
-    drun-display-format:         "{name}";
-    window-format:               "{w} · {c} · {t}";
-    font:                        "JetBrainsMono Nerd Font 12";
-    
-    /* Behavior */
-    terminal:                    "ghostty";
-    ssh-client:                  "ssh";
-    ssh-command:                 "{terminal} -e {ssh-client} {host}";
-    matching:                    "fuzzy";
-    scroll-method:               0;
-    disable-history:             true;
-    sidebar-mode:                true;
-    
-    /* Performance */
-    lazy-grab:                   true;
-    dpi:                         96;
+    modi:                "drun,run,window";
+    show-icons:          true;
+    icon-theme:          "Papirus-Dark";
+    display-drun:        "";
+    display-run:         "";
+    display-window:      "";
+    drun-display-format: "{name}";
+    window-format:       "{w} · {c} · {t}";
+    font:                "JetBrainsMono Nerd Font 13";
+    terminal:            "ghostty";
+    matching:            "fuzzy";
+    scroll-method:       0;
+    disable-history:     false;
+    sidebar-mode:        false;
+    lazy-grab:           true;
+    dpi:                 96;
 }
 
 * {
-    /* Color Palette - Nord-inspired with custom accents */
-    bg:                          #1e2127;
-    bg-alt:                      #282c34;
-    fg:                          #abb2bf;
-    fg-alt:                      #5c6370;
-    
-    accent:                      #f1faee;
-    accent-alt:                  #fefae0;
-    
-    success:                     #98c379;
-    warning:                     #e5c07b;
-    error:                       #e06c75;
-    
-    urgent:                      #be5046;
-    selected:                    #caf0f8;
-    
-    /* Base colors */
-    background:                  @bg;
-    foreground:                  @fg;
-    
-    normal-background:           @bg;
+    bg:       #0e1016;
+    bg-alt:   #1c2030;
+    bg-high:  #2e3650;
+    fg:       #c8d4e8;
+    fg-alt:   #4a5260;
+    accent:   #b85c2a;
+    urgent:   #e05a3a;
+
+    background-color:            transparent;
+    text-color:                  @fg;
+    border-color:                @accent;
+    separatorcolor:              @bg-alt;
+    spacing:                     0;
+
+    normal-background:           transparent;
     normal-foreground:           @fg;
-    alternate-normal-background: @bg-alt;
-    alternate-normal-foreground: @fg;
-    selected-normal-background:  @selected;
-    selected-normal-foreground:  @bg;
-    
-    active-background:           @bg;
+    alternate-normal-background: transparent;
+    alternate-normal-foreground: @fg-alt;
+    selected-normal-background:  @bg-high;
+    selected-normal-foreground:  @fg;
+
+    active-background:           transparent;
     active-foreground:           @accent;
-    alternate-active-background: @bg-alt;
+    alternate-active-background: transparent;
     alternate-active-foreground: @accent;
     selected-active-background:  @accent;
     selected-active-foreground:  @bg;
-    
-    urgent-background:           @bg;
-    urgent-foreground:           @error;
-    alternate-urgent-background: @bg-alt;
-    alternate-urgent-foreground: @error;
-    selected-urgent-background:  @error;
+
+    urgent-background:           transparent;
+    urgent-foreground:           @urgent;
+    alternate-urgent-background: transparent;
+    alternate-urgent-foreground: @urgent;
+    selected-urgent-background:  @urgent;
     selected-urgent-foreground:  @bg;
-    
-    /* Borders and spacing */
-    border-color:                @accent;
-    separatorcolor:              @accent-alt;
-    
-    background-color:            transparent;
-    text-color:                  @fg;
-    
-    spacing:                     0;
-    border-radius:               12px;
 }
 
 window {
-    background-color:            @bg;
-    border:                      2px;
-    border-color:                @accent;
-    border-radius:               12px;
-    padding:                     0;
-    width:                       50%;
-    
-    /* Shadow for depth */
-    transparency:                "real";
+    background-color: @bg;
+    border:           1px;
+    border-color:     @accent;
+    border-radius:    5px;
+    padding:          0;
+    width:            40%;
 }
 
 mainbox {
-    background-color:            @bg;
-    border:                      0;
-    padding:                     0;
-    spacing:                     0;
+    background-color: transparent;
+    border:           0;
+    padding:          0;
+    spacing:          0;
+    children:         [ "inputbar", "listview" ];
 }
 
 inputbar {
-    background-color:            @bg-alt;
-    text-color:                  @fg;
-    border:                      0 0 2px 0;
-    border-color:                @accent;
-    border-radius:               12px 12px 0 0;
-    padding:                     20px;
-    spacing:                     10px;
-    children:                    [ "prompt", "textbox-prompt-colon", "entry", "case-indicator" ];
+    background-color: @bg-alt;
+    text-color:       @fg;
+    border:           0 0 1px 0;
+    border-color:     @accent;
+    border-radius:    5px 5px 0 0;
+    padding:          14px 16px;
+    spacing:          10px;
+    children:         [ "prompt", "textbox-prompt-colon", "entry" ];
 }
 
 prompt {
-    background-color:            transparent;
-    text-color:                  @accent;
-    font:                        "JetBrainsMono Nerd Font Bold 14";
+    background-color: transparent;
+    text-color:       @accent;
+    font:             "JetBrainsMono Nerd Font Bold 13";
 }
 
 textbox-prompt-colon {
-    background-color:            transparent;
-    text-color:                  @fg-alt;
-    expand:                      false;
-    str:                         "󰍉";
-    margin:                      0 5px 0 0;
+    background-color: transparent;
+    text-color:       @fg-alt;
+    expand:           false;
+    str:              "·";
+    margin:           0 6px 0 0;
 }
 
 entry {
-    background-color:            transparent;
-    text-color:                  @fg;
-    placeholder:                 "Search...";
-    placeholder-color:           @fg-alt;
-    cursor:                      text;
-}
-
-case-indicator {
-    background-color:            transparent;
-    text-color:                  @fg-alt;
-}
-
-message {
-    background-color:            @bg-alt;
-    border:                      2px 0 0 0;
-    border-color:                @accent;
-    padding:                     15px;
-}
-
-textbox {
-    background-color:            transparent;
-    text-color:                  @fg;
+    background-color:  transparent;
+    text-color:        @fg;
+    placeholder:       "search...";
+    placeholder-color: @fg-alt;
+    cursor:            text;
 }
 
 listview {
-    background-color:            @bg;
-    border:                      0;
-    padding:                     10px;
-    spacing:                     5px;
-    scrollbar:                   true;
-    lines:                       8;
-    cycle:                       true;
-    dynamic:                     true;
-    fixed-height:                true;
-}
-
-scrollbar {
-    background-color:            @bg-alt;
-    handle-color:                @accent;
-    handle-width:                6px;
-    border:                      0;
-    border-radius:               6px;
-    padding:                     0;
-    margin:                      0 0 0 5px;
+    background-color: @bg;
+    border:           0;
+    padding:          8px;
+    spacing:          2px;
+    scrollbar:        false;
+    lines:            8;
+    cycle:            true;
+    dynamic:          true;
+    fixed-height:     true;
+    border-radius:    0 0 5px 5px;
 }
 
 element {
-    background-color:            transparent;
-    text-color:                  @fg;
-    border:                      0;
-    border-radius:               8px;
-    padding:                     10px;
-    spacing:                     10px;
+    background-color: transparent;
+    text-color:       @fg;
+    border:           0;
+    border-radius:    4px;
+    padding:          8px 10px;
+    spacing:          10px;
 }
 
 element normal.normal {
-    background-color:            transparent;
-    text-color:                  @fg;
+    background-color: transparent;
+    text-color:       @fg;
 }
 
 element normal.urgent {
-    background-color:            transparent;
-    text-color:                  @urgent;
+    background-color: transparent;
+    text-color:       @urgent;
 }
 
 element normal.active {
-    background-color:            transparent;
-    text-color:                  @accent;
+    background-color: transparent;
+    text-color:       @accent;
 }
 
 element selected.normal {
-    background-color:            @selected;
-    text-color:                  @bg;
-    border-radius:               8px;
+    background-color: @bg-high;
+    text-color:       @fg;
+    border:           0 0 0 2px;
+    border-color:     @accent;
 }
 
 element selected.urgent {
-    background-color:            @error;
-    text-color:                  @bg;
+    background-color: @urgent;
+    text-color:       @bg;
 }
 
 element selected.active {
-    background-color:            @accent;
-    text-color:                  @bg;
+    background-color: @accent;
+    text-color:       @bg;
 }
 
 element alternate.normal {
-    background-color:            transparent;
-    text-color:                  @fg;
+    background-color: transparent;
+    text-color:       @fg-alt;
 }
 
 element alternate.urgent {
-    background-color:            transparent;
-    text-color:                  @urgent;
+    background-color: transparent;
+    text-color:       @urgent;
 }
 
 element alternate.active {
-    background-color:            transparent;
-    text-color:                  @accent;
+    background-color: transparent;
+    text-color:       @accent;
 }
 
 element-icon {
-    background-color:            transparent;
-    size:                        32px;
-    cursor:                      pointer;
+    background-color: transparent;
+    size:             28px;
+    cursor:           pointer;
 }
 
 element-text {
-    background-color:            transparent;
-    text-color:                  inherit;
-    cursor:                      pointer;
-    vertical-align:              0.5;
+    background-color: transparent;
+    text-color:       inherit;
+    cursor:           pointer;
+    vertical-align:   0.5;
 }
 
-mode-switcher {
-    background-color:            @bg-alt;
-    border:                      2px 0 0 0;
-    border-color:                @accent;
-    border-radius:               0 0 12px 12px;
-    padding:                     10px;
-    spacing:                     10px;
-}
-
-button {
-    background-color:            transparent;
-    text-color:                  @fg-alt;
-    border-radius:               6px;
-    padding:                     10px 20px;
-    cursor:                      pointer;
-}
-
-button selected {
-    background-color:            @accent;
-    text-color:                  @bg;
-}
-
-/* Error message styling */
 error-message {
-    background-color:            @bg;
-    border:                      2px;
-    border-color:                @error;
-    border-radius:               12px;
-    padding:                     20px;
+    background-color: @bg;
+    border:           1px;
+    border-color:     @urgent;
+    border-radius:    5px;
+    padding:          20px;
+    text-color:       @fg;
 }
-
-/* Additional elements for a polished look */
-num-filtered-rows,
-num-rows {
-    text-color:                  @fg-alt;
-    expand:                      false;
-}
-

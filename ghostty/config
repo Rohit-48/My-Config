@@ -49,22 +49,23 @@
 # resize-overlay-duration = 4s 200ms
 #
 #
-# Font
 font-family = JetBrainsMono Nerd Font
-font-size = 14
+font-size = 12
 
-# Rendering
-background-opacity = 0.95
+theme = iron
 
-# Cursor
+background-opacity = 0.80
+
 cursor-style = block
+cursor-color = #b85c2a
 
+selection-foreground = #0e1016
+selection-background = #b85c2a
 
+window-padding-x = 0
+window-padding-y = 0
+window-decoration = false
 
-# Scrollback
 scrollback-limit = 10000
 
-# Shell (important on NixOS)
 shell-integration = zsh
-theme = my-dark-theme
-
