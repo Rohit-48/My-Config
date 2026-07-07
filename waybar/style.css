@@ -59,6 +59,29 @@ window#waybar.hidden {
   border-bottom-right-radius: 5px;
 }
 
+#custom-media {
+  background: @color0;
+  color: @foreground;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin-right: 5px;
+  transition: none;
+}
+
+#custom-media.paused {
+  color: #4a5260;
+}
+
+#custom-media.playing {
+  color: @foreground;
+}
+
 #clock {
   background: @color15;
   color: @foreground;

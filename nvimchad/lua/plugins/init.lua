@@ -10,6 +10,22 @@ return {
       require "configs.lspconfig"
     end,
   },
+  
+  -- NvimTree
+  {
+    "nvim-tree/nvim-tree.lua",
+
+    opts = function()
+      local conf = require "nvchad.configs.nvimtree"
+      conf.view.width = 35
+      conf.view.relativenumber = true
+      conf.renderer.group_empty = true
+      conf.renderer.highlight_git = true
+      conf.renderer.root_folder_label = false
+      conf.filters.git_ignored = false
+      return conf
+    end,
+  },
 
   {
   "nvim-telescope/telescope.nvim",
@@ -68,17 +84,6 @@ return {
   end,
 },
 
-{
-  "stevearc/oil.nvim",
-
-  cmd = "Oil",
-
-  dependencies = {
-    "nvim-tree/nvim-web-devicons",
-  },
-
-  opts = {},
-},
 
 {
   "rmagatti/auto-session",
@@ -169,8 +174,8 @@ return {
     opts = {
       auto_update = true,
 
-      neovim_image_text = "One missing comma away from madness",
-
+      neovim_image_text = "vim guy now🌴",
+        
       main_image = "neovim",
 
       client_id = "793271441293967371",
@@ -185,7 +190,15 @@ return {
 
       editing_text = "Editing %s",
 
+      file_explorer_text  = "Browsing %s",
+
+      git_commit_text     = "Committing changes",
+
+
+
       workspace_text = "Working on %s",
+
+
     },
   },
 

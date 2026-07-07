@@ -59,9 +59,6 @@ map("n", "<F12>", dap.step_out)
 -- dap 
 map("n", "<leader>b", dap.toggle_breakpoint)
 
--- oli nvim 
-map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-
 -- TMUX Stuff
 map("n", "<C-h>", "<cmd>TmuxNavigateLeft<CR>")
 map("n", "<C-l>", "<cmd>TmuxNavigateRight<CR>")
