@@ -1,5 +1,5 @@
-local dap = require("dap")
-local dapui = require("dapui")
+local dap = require "dap"
+local dapui = require "dapui"
 
 dapui.setup()
 
@@ -15,4 +15,4 @@ dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
 
-require("dap-python").setup("python")
+require("dap-python").setup "python"

@@ -9,8 +9,3 @@ o.expandtab = true
 o.smartindent = true
 o.cursorline = true
 o.scrolloff = 8
-
--- add yours here!-- add yours here!
-
--- local o = vim.o
--- o.cursorlineopt ='both' -- to enable cursorline!
